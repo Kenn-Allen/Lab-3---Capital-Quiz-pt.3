@@ -4,41 +4,37 @@
              x:Class="Lab3CapitalQuizPart3.Pages.QuizView"
              Title="Quiz">
 
-    <Grid RowDefinitions="80, 70, 175, 100, 100, *, 100"
-          ColumnDefinitions="Auto, *">
-        <BoxView Grid.Row="0" Grid.ColumnSpan="2"
-                 BackgroundColor="#555555"/>
-        <BoxView Grid.Row="1" Grid.ColumnSpan="2"/>
-        <BoxView Grid.Row="2" Grid.ColumnSpan="2"/>
-        <BoxView Grid.Row="3" Grid.ColumnSpan="2"/>
-        <BoxView Grid.Row="4" Grid.ColumnSpan="2"
-                 BackgroundColor="Purple"/>
-        <BoxView Grid.Row="5" Grid.ColumnSpan="2"
-                 BackgroundColor="Pink"/>
-        <BoxView Grid.Row="6" Grid.ColumnSpan="2"
-                 BackgroundColor="Orange"/>
-
+    <Grid RowDefinitions="80, 70, 175, 100, *, *, 100">
+        <BoxView Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#555555"/>
+        <BoxView Grid.Row="1"/>
+        <BoxView Grid.Row="2"/>
+        <BoxView Grid.Row="3"/>
+        <BoxView Grid.Row="4"/>
+        <BoxView Grid.Row="5"/>
+        <BoxView Grid.Row="6"/>
 
         <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Capital Quiz"
                TextColor="White"
                FontSize="50"
                HorizontalTextAlignment="Center"/>
 
-        <HorizontalStackLayout Grid.Row="1">
-            <Label Grid.Row="1" Grid.Column="0" Text="Score:"
-                   TextColor="White"
-                   Padding="15"
-                   />
-            <Label Grid.Row="1" Grid.Column="1" Text="X / 20"
-                   TextColor="White"
-                   BackgroundColor="#333333"
-                   Padding="5"
-                   WidthRequest="50"
-                   Margin="1, 10, 10, 30"
-                   />
-        </HorizontalStackLayout>
+        <Grid Grid.Row="1" ColumnDefinitions="*,*">
+            <HorizontalStackLayout Grid.Row="1">
+                <Label Grid.Row="1" Grid.Column="0" Text="Score:"
+                       TextColor="White"
+                       Padding="15"
+                       />
+                <Label Grid.Row="1" Grid.Column="1" Text="X / 20"
+                       TextColor="White"
+                       BackgroundColor="#333333"
+                       Padding="5"
+                       WidthRequest="50"
+                       Margin="1, 10, 10, 30"
+                       />
+            </HorizontalStackLayout>
+        </Grid>
 
-        <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
+        <VerticalStackLayout Grid.Row="2">
             <Grid RowDefinitions="Auto, *, *" ColumnDefinitions="*, *"
                   Padding="30"
                   >
@@ -79,29 +75,39 @@
             </Grid>
         </VerticalStackLayout>
 
-        <Button Grid.Row="3" Grid.ColumnSpan="2"
+        <Button Grid.Row="3"
                 Text="Next"
                 FontSize="15"
                 HeightRequest="20"
                 WidthRequest="115"
                 FontAttributes="Bold"
                 />
-        <HorizontalStackLayout Grid.Row="4" Grid.ColumnSpan="2">
-            <Label Grid.Row="4" Grid.ColumnSpan="2"
-                   Text="Correct!"
+
+        <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
+            <Label Grid.Row="4"
+                   Text="Incorrect... "
+                   TextColor="White"
                    FontSize="35"
                    HeightRequest="45"
-                   />
+                />
             <Image Source="icon_correct.png" 
-                   x:Name="imgCorrect"
+                   x:Name="imgIncorrect"
                    HeightRequest="45"
                    Margin="10"
                    WidthRequest="30"
-                   />
+                />
         </HorizontalStackLayout>
-        
+
+        <HorizontalStackLayout Grid.Row="6" HorizontalOptions="End"
+                               VerticalOptions="End">
+            <Button Text="Quit"
+                    FontSize="15"
+                    WidthRequest="175"
+                    HeightRequest="25"
+                    Margin="10"/>
+        </HorizontalStackLayout>
+
+
+
     </Grid>
-        
-
-
 </ContentPage>
