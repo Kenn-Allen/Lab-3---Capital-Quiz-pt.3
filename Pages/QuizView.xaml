@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lab3CapitalQuizPart3.Pages.QuizView"
-             Title="Quiz">
+             Title="">
 
     <Grid RowDefinitions="80, 70, 175, 100, *, *, 100">
         <BoxView Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#555555"/>
@@ -15,7 +15,8 @@
 
         <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Capital Quiz"
                TextColor="White"
-               FontSize="50"
+               FontSize="40"
+               VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center"/>
 
         <Grid Grid.Row="1" ColumnDefinitions="*,*">
@@ -36,30 +37,29 @@
 
         <VerticalStackLayout Grid.Row="2">
             <Grid RowDefinitions="Auto, *, *" ColumnDefinitions="*, *"
-                  Padding="30"
+                  RowSpacing="7"
+                  ColumnSpacing="7"
+                  Padding="20"
                   >
                 <BoxView Grid.Row="1" Grid.Column="0"
                          BackgroundColor="#444444"
-                         Margin="0, 0, 10, 10"
                          />
                 <BoxView Grid.Row="1" Grid.Column="1"
                          BackgroundColor="#444444"
-                         Margin="0, 0, 10, 10"
                          />
                 <BoxView Grid.Row="2" Grid.Column="0"
                          BackgroundColor="#444444"
-                         Margin="0, 0, 10, 10"/>
+                         />
                 <BoxView Grid.Row="2" Grid.Column="1"
                          BackgroundColor="#444444"
-                         Margin="0, 0, 10, 10"/>
-
+                         />
 
                 <Label Grid.Row="0" Grid.ColumnSpan="2"
                        Text="What is the capital of Texas?"
                        TextColor="White"
-                       FontSize="15"
+                       FontSize="17"
                        HorizontalTextAlignment="Center"
-                       LineHeight="3"
+                       LineHeight="3.5"
                        />
 
                 <RadioButton Grid.Row="1" Grid.Column="0"
@@ -103,11 +103,8 @@
             <Button Text="Quit"
                     FontSize="15"
                     WidthRequest="175"
-                    HeightRequest="25"
-                    Margin="10"/>
+                    Margin="10"
+                    />
         </HorizontalStackLayout>
-
-
-
     </Grid>
 </ContentPage>
