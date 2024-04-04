@@ -5,5 +5,7 @@ public partial class QuizView : ContentPage
 	public QuizView()
 	{
 		InitializeComponent();
-	}
+
+        imgCorrect.Source = "icon_correct.png";
+    }
 }

@@ -4,15 +4,13 @@
              x:Class="Lab3CapitalQuizPart3.Pages.QuizView"
              Title="Quiz">
 
-    <Grid RowDefinitions="80, 70, 100, 100, 100, *, 100"
+    <Grid RowDefinitions="80, 70, 175, 100, 100, *, 100"
           ColumnDefinitions="Auto, *">
         <BoxView Grid.Row="0" Grid.ColumnSpan="2"
                  BackgroundColor="#555555"/>
         <BoxView Grid.Row="1" Grid.ColumnSpan="2"/>
-        <BoxView Grid.Row="2" Grid.ColumnSpan="2"
-                 BackgroundColor="Green"/>
-        <BoxView Grid.Row="3" Grid.ColumnSpan="2"
-                 BackgroundColor="Yellow"/>
+        <BoxView Grid.Row="2" Grid.ColumnSpan="2"/>
+        <BoxView Grid.Row="3" Grid.ColumnSpan="2"/>
         <BoxView Grid.Row="4" Grid.ColumnSpan="2"
                  BackgroundColor="Purple"/>
         <BoxView Grid.Row="5" Grid.ColumnSpan="2"
@@ -25,7 +23,7 @@
                TextColor="White"
                FontSize="50"
                HorizontalTextAlignment="Center"/>
-        
+
         <HorizontalStackLayout Grid.Row="1">
             <Label Grid.Row="1" Grid.Column="0" Text="Score:"
                    TextColor="White"
@@ -39,11 +37,71 @@
                    Margin="1, 10, 10, 30"
                    />
         </HorizontalStackLayout>
- 
+
+        <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid RowDefinitions="Auto, *, *" ColumnDefinitions="*, *"
+                  Padding="30"
+                  >
+                <BoxView Grid.Row="1" Grid.Column="0"
+                         BackgroundColor="#444444"
+                         Margin="0, 0, 10, 10"
+                         />
+                <BoxView Grid.Row="1" Grid.Column="1"
+                         BackgroundColor="#444444"
+                         Margin="0, 0, 10, 10"
+                         />
+                <BoxView Grid.Row="2" Grid.Column="0"
+                         BackgroundColor="#444444"
+                         Margin="0, 0, 10, 10"/>
+                <BoxView Grid.Row="2" Grid.Column="1"
+                         BackgroundColor="#444444"
+                         Margin="0, 0, 10, 10"/>
 
 
+                <Label Grid.Row="0" Grid.ColumnSpan="2"
+                       Text="What is the capital of Texas?"
+                       TextColor="White"
+                       FontSize="15"
+                       HorizontalTextAlignment="Center"
+                       LineHeight="3"
+                       />
+
+                <RadioButton Grid.Row="1" Grid.Column="0"
+                             Content="Choice 1" TextColor="White"
+                             />
+                <RadioButton Grid.Row="2" Grid.Column="0"
+                             Content="Choice 2" TextColor="White"
+                             />
+                <RadioButton Grid.Row="1" Grid.Column="1"
+                             Content="Choice 3" TextColor="White"/>
+                <RadioButton Grid.Row="2" Grid.Column="1"
+                             Content="Choice 4" TextColor="White"/>
+            </Grid>
+        </VerticalStackLayout>
+
+        <Button Grid.Row="3" Grid.ColumnSpan="2"
+                Text="Next"
+                FontSize="15"
+                HeightRequest="20"
+                WidthRequest="115"
+                FontAttributes="Bold"
+                />
+        <HorizontalStackLayout Grid.Row="4" Grid.ColumnSpan="2">
+            <Label Grid.Row="4" Grid.ColumnSpan="2"
+                   Text="Correct!"
+                   FontSize="35"
+                   HeightRequest="45"
+                   />
+            <Image Source="icon_correct.png" 
+                   x:Name="imgCorrect"
+                   HeightRequest="45"
+                   Margin="10"
+                   WidthRequest="30"
+                   />
+        </HorizontalStackLayout>
+        
     </Grid>
-          
-          
-          
+        
+
+
 </ContentPage>
