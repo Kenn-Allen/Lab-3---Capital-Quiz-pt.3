@@ -55,7 +55,7 @@
                          />
 
                 <Label Grid.Row="0" Grid.ColumnSpan="2"
-                       Text="What is the capital of Texas?"
+                       x:Name="lblQuestion"
                        TextColor="White"
                        FontSize="17"
                        HorizontalTextAlignment="Center"
@@ -63,24 +63,27 @@
                        />
 
                 <RadioButton Grid.Row="1" Grid.Column="0"
-                             Content="Choice 1" TextColor="White"
+                             x:Name="radChoice1"
+                             TextColor="White"
                              />
                 <RadioButton Grid.Row="2" Grid.Column="0"
-                             Content="Choice 2" TextColor="White"
+                             x:Name="radChoice2"
+                             TextColor="White"
                              />
                 <RadioButton Grid.Row="1" Grid.Column="1"
-                             Content="Choice 3" TextColor="White"/>
+                             x:Name="radChoice3"
+                             TextColor="White"/>
                 <RadioButton Grid.Row="2" Grid.Column="1"
-                             Content="Choice 4" TextColor="White"/>
+                             x:Name="radChoice4" 
+                             TextColor="White"/>
             </Grid>
         </VerticalStackLayout>
 
-        <Button Grid.Row="3"
-                Text="Next"
-                FontSize="15"
-                HeightRequest="20"
+        <Button Grid.Row="3" Text="Next"
+                FontSize="15" FontAttributes="Bold"
+                HeightRequest="20" 
                 WidthRequest="115"
-                FontAttributes="Bold"
+                Clicked="NextQuestionClicked"
                 />
 
         <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">

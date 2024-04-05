@@ -30,7 +30,7 @@ namespace Lab3CapitalQuizPart3
                 Missed.Add(App.states[chosen]);
             }
 
-            MainPage = new Pages.ResultsView(score, overall, Missed); //new AppShell();
+            // MainPage = new Pages.ResultsView(score, overall, Missed); //new AppShell();
         }
 
 
