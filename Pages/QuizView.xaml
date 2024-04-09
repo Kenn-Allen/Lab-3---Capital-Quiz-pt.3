@@ -5,7 +5,7 @@
              Title="">
 
     <Grid RowDefinitions="80, 70, 175, 100, *, *, 100">
-        <BoxView Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="#555555"/>
+        <BoxView Grid.Row="0" BackgroundColor="#555555"/>
         <BoxView Grid.Row="1"/>
         <BoxView Grid.Row="2"/>
         <BoxView Grid.Row="3"/>
@@ -13,28 +13,26 @@
         <BoxView Grid.Row="5"/>
         <BoxView Grid.Row="6"/>
 
-        <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Capital Quiz"
+        <Label Grid.Row="0" Text="Capital Quiz"
                TextColor="White"
                FontSize="40"
                VerticalTextAlignment="Center"
                HorizontalTextAlignment="Center"/>
 
-        <Grid Grid.Row="1" ColumnDefinitions="*,*">
-            <HorizontalStackLayout Grid.Row="1">
-                <Label Grid.Row="1" Grid.Column="0" Text="Score:"
-                       TextColor="White"
-                       Padding="15"
-                       />
-                <Label Grid.Row="1" Grid.Column="1" Text="  / 20"
-                       x:Name="lblScoreCount"
-                       TextColor="White"
-                       BackgroundColor="#333333"
-                       Padding="5"
-                       WidthRequest="50"
-                       Margin="1, 10, 10, 30"
-                       />
-            </HorizontalStackLayout>
-        </Grid>
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Start">
+            <Label Text="Score:"
+                   TextColor="White"
+                   Padding="10"
+                   Margin="10, 10, 0, 15"
+                   />
+            <Label Text="  / 20"
+                   x:Name="lblScoreCount"
+                   TextColor="White"
+                   BackgroundColor="#333333"
+                   Padding="10"
+                   Margin="5, 10, 0, 25"
+                   />
+        </HorizontalStackLayout>
 
         <VerticalStackLayout Grid.Row="2">
             <Grid RowDefinitions="Auto, *, *" ColumnDefinitions="*, *"

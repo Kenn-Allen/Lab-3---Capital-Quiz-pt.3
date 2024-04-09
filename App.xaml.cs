@@ -10,7 +10,7 @@ namespace Lab3CapitalQuizPart3
             InitializeComponent();
             LoadStates();
 
-            MainPage = new Pages.QuizView();
+            MainPage = new Pages.ResultsView();
 
             //TestResult();
         }

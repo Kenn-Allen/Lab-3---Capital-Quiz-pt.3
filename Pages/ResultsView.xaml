@@ -3,10 +3,87 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Lab3CapitalQuizPart3.Pages.ResultsView"
              Title="ResultsView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+    <Grid RowDefinitions="100, 100, 100, *, 100">
+        <BoxView Grid.Row="0"/>
+        <BoxView Grid.Row="1"/>
+        <BoxView Grid.Row="2"/>
+        <BoxView Grid.Row="3"/>
+        <BoxView Grid.Row="4"/>
+
+        <Label Grid.Row="0" Text="Result"
+               TextColor="White"
+               FontSize="40"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               />
+
+        <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center">
+            <Label x:Name="lblScoreCount" Text="1"
+                   FontSize="40"
+                   TextColor="White"
+                   BackgroundColor="#333333"
+                   Padding="20, 10, 20, 10"
+                   Margin="10"
+                   VerticalOptions="Center"
+                   HorizontalTextAlignment="Center"
+                />
+
+            <Label Text="of"
+                   TextColor="White"
+                   FontSize="40"
+                   VerticalOptions="Center"
+                   Padding="20, 10, 20, 10"
+                   />
+
+            <Label Text="20"
+                   x:Name="lblQuizSize"
+                   FontSize="40"
+                   TextColor="White"
+                   BackgroundColor="#333333"
+                   Padding="20, 10, 20, 10"
+                   Margin="10"
+                   VerticalOptions="Center"
+                />
+        </HorizontalStackLayout>
+
+        <Label Grid.Row="2" Text="You missed the following states:"
+               x:Name="lblWinLoseMsg"
+               TextColor="White"
+               FontSize="17"
+               HorizontalTextAlignment="Center"
+               VerticalOptions="Center"
+               />
+        
+        <CollectionView Grid.Row="3" x:Name="collMissedStates" Margin="10" ItemsLayout="VerticalGrid, 2">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Label Text="{Binding Text}" Padding="25" FontSize="25" BackgroundColor="#333333" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
+            <Button Text="New Game"
+                    TextColor="Black"
+                    FontSize="20"
+                    WidthRequest="250"
+                    Margin="10, 25"
+                    BackgroundColor="#AC99EA"
+                    />
+            <Button Text="Exit"
+                    TextColor="Black"
+                    FontSize="20"
+                    WidthRequest="250"
+                    Margin="10, 25"
+                    BackgroundColor="#AC99EA"
+                    />
+
+        </HorizontalStackLayout>
+        
+
+    </Grid>
+    
 </ContentPage>
