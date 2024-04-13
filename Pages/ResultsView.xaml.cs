@@ -1,3 +1,17 @@
+/*
+
+Program Author: Kennide Allen
+
+USM ID: 10138082
+
+Assignment: Program 3: Capital Quiz, Part 3
+
+Description:
+
+Handles functionality of the Results and allows the user to quit or start a new game.
+Displays the incorrect answers and the user's final score.
+*/
+
 using Lab3CapitalQuizPart3.Classes;
 using System.Collections.ObjectModel;
 
@@ -24,6 +38,7 @@ public partial class ResultsView : ContentPage
         } 
     }
 
+    // Constructor: takes the score, total number of questions, and missed states
     public ResultsView(int score, int totalQuestions, List<State> missedStates)
     {
         _score = score;
@@ -46,6 +61,9 @@ public partial class ResultsView : ContentPage
         collMissedStates.ItemsSource = missedStatesStr; 
     }
 
+
+    // Displays the results text based on if all answers are correct
+    // or if the user missed some.
     private void Results()
     {
         lblScoreCount.Text = _score.ToString();

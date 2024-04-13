@@ -1,3 +1,17 @@
+/*
+
+Program Author: Kennide Allen
+
+USM ID: 10138082
+
+Assignment: Program 3: Capital Quiz, Part 3
+
+Description:
+
+Handles the functionality of the Quiz and allows the user to quit during the middle of the quiz. 
+Displays the question, users current score, and whether their answer is correct or incorrect.
+*/
+
 using Lab3CapitalQuizPart3.Classes;
 namespace Lab3CapitalQuizPart3.Pages;
 
@@ -19,8 +33,7 @@ public partial class QuizView : ContentPage
         DisplayQuestion();
     }
 
-    
-
+    // displays the question, answer choices, and submit button text
 	private void DisplayQuestion()
 	{
         QuizQuestion? question = _quiz.FetchNext();
@@ -32,6 +45,7 @@ public partial class QuizView : ContentPage
             // Question
             lblQuestion.Text = "What is the capital of " + _state.StateName + "?";
 
+            // list that holds the options
             List<State> _options = question.GenerateOptions();
 
             if (_options.Count >= 4)
@@ -49,6 +63,7 @@ public partial class QuizView : ContentPage
 
     private void SelectedOption(object sender, CheckedChangedEventArgs e)
     {
+        // if a radio button is selected, change it to a string and enable the submit button
         if (sender is RadioButton selectedRadio && selectedRadio.IsChecked)
         {
             _selectedOption = selectedRadio.Content.ToString();
@@ -63,6 +78,8 @@ public partial class QuizView : ContentPage
     {
         string? selectedOption = _selectedOption;
 
+        // if an answer has been submitted, check if there are more questions
+        // otherwise, check the user answer answer
         if (_hasSubmitted)
         {
             if (_currentQuestion < _quiz.Count)
@@ -117,6 +134,7 @@ public partial class QuizView : ContentPage
         }
     }
 
+    // resets the radio buttons and answer message and image
     private void AnswerReset()
     {
         rdoChoice1.IsChecked = false;
