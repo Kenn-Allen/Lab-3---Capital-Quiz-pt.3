@@ -91,18 +91,6 @@
                 WidthRequest="115"
                 BackgroundColor="#444444"
                 Clicked="SubmitBtnClicked"
-                IsVisible="True"
-                />
-
-        <Button Grid.Row="3" Text="Next"
-                x:Name="NextResultBtn"
-                TextColor="Black"
-                FontSize="15"
-                HeightRequest="20"
-                WidthRequest="115"
-                BackgroundColor="#AC99EA"
-                Clicked="NextResultBtnClicked"
-                IsVisible="False"
                 />
 
         <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">

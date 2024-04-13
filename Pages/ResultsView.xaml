@@ -19,7 +19,7 @@
                />
 
         <HorizontalStackLayout Grid.Row="1" HorizontalOptions="Center">
-            <Label x:Name="lblScoreCount" Text="1"
+            <Label x:Name="lblScoreCount"
                    FontSize="40"
                    TextColor="White"
                    BackgroundColor="#333333"
@@ -47,7 +47,7 @@
                 />
         </HorizontalStackLayout>
 
-        <Label Grid.Row="2" Text="You missed the following states:"
+        <Label Grid.Row="2"
                x:Name="lblWinLoseMsg"
                TextColor="White"
                FontSize="17"
@@ -59,11 +59,29 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Label Text="{Binding Text}" Padding="25" FontSize="25" BackgroundColor="#333333" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="5" />
+                        <Label Text="{Binding Text}" 
+                               TextColor="White"
+                               Padding="25" 
+                               FontSize="25" 
+                               BackgroundColor="#333333" 
+                               HorizontalTextAlignment="Center" 
+                               VerticalTextAlignment="Center" 
+                               Margin="5" 
+                               />
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+
+        <HorizontalStackLayout Grid.Row="3" HorizontalOptions="Center">
+            <Image Grid.Row="3" 
+                   x:Name="imgMerica"
+                   Source="merica.jpg"
+                   WidthRequest="530"
+                   Margin="5"
+                   IsVisible="False"
+                   />
+        </HorizontalStackLayout>
 
         <HorizontalStackLayout Grid.Row="4" HorizontalOptions="Center">
             <Button Text="New Game"
@@ -72,6 +90,7 @@
                     WidthRequest="250"
                     Margin="10, 25"
                     BackgroundColor="#AC99EA"
+                    Clicked="NewGameBtnClicked"
                     />
             <Button Text="Exit"
                     TextColor="Black"
@@ -79,8 +98,8 @@
                     WidthRequest="250"
                     Margin="10, 25"
                     BackgroundColor="#AC99EA"
+                    Clicked="ExitBtnClicked"
                     />
-
         </HorizontalStackLayout>
         
 

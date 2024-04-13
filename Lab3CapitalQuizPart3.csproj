@@ -58,6 +58,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\icon_correct.png" />
 	  <None Remove="Resources\Images\icon_incorrect.png" />
+	  <None Remove="Resources\Images\merica.jpg" />
 	  <None Remove="Resources\Raw\StateCapitals.txt" />
 	</ItemGroup>
 

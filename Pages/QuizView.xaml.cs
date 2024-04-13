@@ -1,16 +1,17 @@
 using Lab3CapitalQuizPart3.Classes;
-
 namespace Lab3CapitalQuizPart3.Pages;
 
 public partial class QuizView : ContentPage
 {
-	private int _score = 0;
-	private int _currentQuestion = 0;
+    private int _score = 0;
+	private int _currentQuestion = 1;
+    private int _totalQuestions = 20;
     private string? _selectedOption;
-    private string? _state;
-    private string? _capital;
+    private State? _state;
+    private  Quiz _quiz = new();
+    private  List<State> _missedQuestions = new();
+    private bool _hasSubmitted = false;
 
-    Quiz quiz = new();
 
     public QuizView()
 	{
@@ -18,20 +19,18 @@ public partial class QuizView : ContentPage
         DisplayQuestion();
     }
 
+    
+
 	private void DisplayQuestion()
 	{
-        QuizQuestion? question = quiz.FetchNext();
+        QuizQuestion? question = _quiz.FetchNext();
 
         if (question != null && question.Correct != null)
         {
-            var state = question.Correct.StateName;
-            _state = state;
-
-            var capital = question.Correct.CapitalName;
-            _capital = capital;
+            _state = question.Correct;
 
             // Question
-            lblQuestion.Text = "What is the capital of " + state + "?";
+            lblQuestion.Text = "What is the capital of " + _state.StateName + "?";
 
             List<State> _options = question.GenerateOptions();
 
@@ -42,6 +41,9 @@ public partial class QuizView : ContentPage
                 rdoChoice3.Content = _options[2].CapitalName;
                 rdoChoice4.Content = _options[3].CapitalName;
             }
+
+            _hasSubmitted = false;
+            SubmitBtn.Text = "Submit";
         }
     }
 
@@ -61,32 +63,58 @@ public partial class QuizView : ContentPage
     {
         string? selectedOption = _selectedOption;
 
-        if (selectedOption != null)
+        if (_hasSubmitted)
         {
-            if (_state != null && _capital != null)
+            if (_currentQuestion < _quiz.Count)
             {
-                string correctCapital = _capital;
+                _currentQuestion++;
 
-                if (selectedOption == correctCapital)
+                AnswerReset();
+                DisplayQuestion();
+            }
+            else
+            {
+                SubmitBtn.BackgroundColor = Color.FromArgb("#512BD4");
+
+                if (App.Current != null)
                 {
-                    _score++;
-                    lblScoreCount.Text = _score.ToString() + " / " + quiz.Count.ToString();
-
-                    lblAnswerStatus.Text = "Correct!";
-                    imgAnswerStatus.Source = "icon_correct.png";
-                }
-                else
-                {
-                    lblAnswerStatus.Text = "Incorrect...";
-                    imgAnswerStatus.Source = "icon_incorrect.png";
-
-                    // add to wrong answers
+                    App.Current.MainPage = new ResultsView(_score, _totalQuestions, _missedQuestions);
                 }
             }
         }
+        else
+        {            
+            if (selectedOption != null)
+            {
+                if (_state != null)
+                {
+                    if (selectedOption == _state.CapitalName)
+                    {
+                        _score++;
+                        lblScoreCount.Text = _score.ToString() + " / " + _quiz.Count.ToString();
 
-        SubmitBtn.IsVisible = false;
-        NextResultBtn.IsVisible = true;
+                        lblAnswerStatus.Text = "Correct!";
+                        imgAnswerStatus.Source = "icon_correct.png";
+
+                    }
+                    else
+                    {
+                        lblAnswerStatus.Text = "Incorrect...";
+                        imgAnswerStatus.Source = "icon_incorrect.png";
+
+
+                        // add to missed quesions list
+                        _missedQuestions.Add(_state);
+                    }
+                }
+            }
+
+            if (_currentQuestion != _quiz.Count)
+                SubmitBtn.Text = "Next";
+            else
+                SubmitBtn.Text = "Results";
+            _hasSubmitted = true;
+        }
     }
 
     private void AnswerReset()
@@ -99,33 +127,9 @@ public partial class QuizView : ContentPage
         lblAnswerStatus.Text = null;
         imgAnswerStatus.Source = null;
     }
-    
-    private void NextResultBtnClicked(object sender, EventArgs e)
-    {
-        _currentQuestion++;
-
-        AnswerReset();
-
-        if (_currentQuestion < quiz.questionQueue.Count)
-        {
-            DisplayQuestion();
-
-            NextResultBtn.IsVisible = false;
-            SubmitBtn.IsVisible = true;
-        }
-        else
-        {
-            NextResultBtn.Text = "Results";
-            NextResultBtn.BackgroundColor = Color.FromArgb("#512BD4");
-
-            if (App.Current != null)
-                App.Current.MainPage = new ResultsView();
-        }
-    }
 
     private void QuitBtnClicked(object sender, EventArgs e)
     {
-        if (App.Current != null)
-            App.Current.Quit();
+        App.Current?.Quit();
     }
 }

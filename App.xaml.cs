@@ -10,15 +10,13 @@ namespace Lab3CapitalQuizPart3
             InitializeComponent();
             LoadStates();
 
-            MainPage = new Pages.ResultsView();
+            MainPage = new Pages.QuizView();
 
-            //TestResult();
+           // TestResult();
         }
 
         private void TestResult()
         {
-
-
             int score = 0;
             int overall = 20;
             List<Classes.State> Missed = new List<Classes.State>();
@@ -30,7 +28,7 @@ namespace Lab3CapitalQuizPart3
                 Missed.Add(App.states[chosen]);
             }
 
-            // MainPage = new Pages.ResultsView(score, overall, Missed); //new AppShell();
+            MainPage = new Pages.ResultsView(score, overall, Missed); //new AppShell();
         }
 
 

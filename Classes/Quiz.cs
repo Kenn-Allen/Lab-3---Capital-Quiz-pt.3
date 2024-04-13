@@ -52,80 +52,80 @@ namespace Lab3CapitalQuizPart3.Classes
 
             return options;
         }
-    
 
-    private void Shuffle(List<State> options, int passes)
-    {
-        //Shuffle the List.
-        Random random = new Random();
-        for (int i = 0; i < passes; i++)
+
+        private void Shuffle(List<State> options, int passes)
         {
-            int x = random.Next(options.Count);
-            int y = random.Next(options.Count);
-            State temp = options[x];
-            options[x] = options[y];
-            options[y] = temp;
+            //Shuffle the List.
+            Random random = new Random();
+            for (int i = 0; i < passes; i++)
+            {
+                int x = random.Next(options.Count);
+                int y = random.Next(options.Count);
+                State temp = options[x];
+                options[x] = options[y];
+                options[y] = temp;
+            }
+        }
+
+        private void SetDistractors()
+        {
+            if (_correct == null)
+                return;
+
+            //called when the correct state is changed.
+            List<State> copy = new List<State>(App.states);
+            copy.Remove(_correct);
+            List<State> final = new List<State>();
+            Random r = new Random();
+
+            for (int i = 0; i < 3; i++)
+            {
+                int chosen = r.Next(0, copy.Count);
+                final.Add(copy[chosen]);
+                copy.RemoveAt(chosen);
+            }
+
+            _distractors = final;
         }
     }
 
-    private void SetDistractors()
+    class Quiz
     {
-        if (_correct == null)
-            return;
+        public Queue<QuizQuestion> questionQueue = new Queue<QuizQuestion>();
+        int _count;
 
-        //called when the correct state is changed.
-        List<State> copy = new List<State>(App.states);
-        copy.Remove(_correct);
-        List<State> final = new List<State>();
-        Random r = new Random();
-
-        for (int i = 0; i < 3; i++)
+        public Quiz(int size = 20)
         {
-            int chosen = r.Next(0, copy.Count);
-            final.Add(copy[chosen]);
-            copy.RemoveAt(chosen);
+            _count = size;
+            GenerateNewQuiz(size);
         }
 
-        _distractors = final;
-    }
-}
-
-class Quiz
-{
-    public Queue<QuizQuestion> questionQueue = new Queue<QuizQuestion>();
-    int _count;
-
-    public Quiz(int size = 20)
-    {
-        _count = size;
-        GenerateNewQuiz(size);
-    }
-
-    public void GenerateNewQuiz(int size)
-    {
-        questionQueue.Clear();
-        List<State> copy = new(App.states);
-        Random r = new Random();
-        for (int i = 0; i < size; i++)
+        public void GenerateNewQuiz(int size)
         {
-            int index = r.Next(0, copy.Count);
-            State state = copy[index];
-            copy.RemoveAt(index);
+            questionQueue.Clear();
+            List<State> copy = new(App.states);
+            Random r = new Random();
+            for (int i = 0; i < size; i++)
+            {
+                int index = r.Next(0, copy.Count);
+                State state = copy[index];
+                copy.RemoveAt(index);
 
-            QuizQuestion question = new QuizQuestion { Correct = state };
-            questionQueue.Enqueue(question);
+                QuizQuestion question = new QuizQuestion { Correct = state };
+                questionQueue.Enqueue(question);
 
+            }
         }
-    }
 
-    public QuizQuestion? FetchNext()
-    {
-        if (questionQueue.Count == 0)
-            return null;
-        else
-            return questionQueue.Dequeue();
-    }
+        public QuizQuestion? FetchNext()
+        {
+            if (questionQueue.Count == 0)
+                return null;
+            else
+                return questionQueue.Dequeue();
+        }
 
-    public int Count { get { return _count; } }
-}
+        public int Count { get { return _count; } }
+    }
 }
